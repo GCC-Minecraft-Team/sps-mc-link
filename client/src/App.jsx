@@ -61,6 +61,7 @@ function App() {
 var authData = "no data";
 
 const authHandler = (err, data) => {
+  console.log("Storing Auth ID");
   authData = data;
   if (err) {
     authData = err;
