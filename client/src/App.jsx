@@ -1,7 +1,7 @@
 import "./App.css";
 import "./Custom.css";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -10,10 +10,14 @@ import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
+import Card from "@material-ui/core/Paper";
+import CardContent from "@material-ui/core/CardContent";
 
 import MicrosoftLogin from "react-microsoft-login";
 import queryString from "query-string";
 import axios from "axios";
+
+import status from "minecraft-server-status";
 
 import {
   createMuiTheme,
@@ -36,6 +40,13 @@ const theme = createMuiTheme({
       dark: "#004c40",
       contrastText: "#000",
     },
+    background: {
+      light: "#ff5f52",
+      main: "#251d1d",
+      dark: "#8e0000",
+      paper: "#1a1414",
+      contrastText: "#fff",
+    },
   },
 });
 
@@ -51,7 +62,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Router>
         <Route exact path="/">
-          <LandingPage />
+          <InfoPage />
         </Route>
         <Route path="/register">
           <LandingPage />
@@ -74,7 +85,93 @@ function App() {
   );
 }
 
-// Index Page
+function StatusInfo(props) {
+  if (props.responseFinal) {
+    if (props.responseFinal.online === true) {
+      return (
+        <div>
+          <span className="online statusText">ONLINE</span>
+          <br></br>
+          <span>
+            Players: {props.responseFinal.players.online}/
+            {props.responseFinal.players.max}
+          </span>
+          <br></br>
+          <span>Version: {props.responseFinal.version}</span>
+        </div>
+      );
+    } else {
+      return <span className="offline statusText">OFFLINE</span>;
+    }
+  } else {
+    return <span>Checking...</span>;
+  }
+}
+
+// Home Page
+function InfoPage() {
+  const [mcresponse, setMcResponse] = useState(0);
+
+  useEffect(() => {
+    axios.get("https://api.mcsrvstat.us/2/nlaha.com").then((response) => {
+      console.log(response.data);
+      setMcResponse(response.data);
+    });
+  }, []);
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Container maxWidth="md">
+          <Typography variant="h3" className="pageTitle">
+            Ballard High School
+            <br></br>
+            Unofficial Minecraft Server
+          </Typography>
+          <Typography className="OswaldHeader" variant="h4" gutterBottom>
+            Connection Instructions
+          </Typography>
+          <Container maxWidth="sm">
+            <Card className="infoPaper">
+              <CardContent>
+                <Typography
+                  className="OswaldHeader paperText"
+                  variant="h5"
+                  gutterBottom
+                >
+                  Server Address:
+                </Typography>
+                <Typography
+                  className="infoParagraph paperText"
+                  variant="h6"
+                  gutterBottom
+                >
+                  nlaha.com
+                </Typography>
+                <Typography
+                  className="OswaldHeader paperText"
+                  variant="h5"
+                  gutterBottom
+                >
+                  Server Status:
+                </Typography>
+                <Typography
+                  className="infoParagraph paperText"
+                  variant="h6"
+                  gutterBottom
+                >
+                  <StatusInfo responseFinal={mcresponse} />
+                </Typography>
+              </CardContent>
+            </Card>
+          </Container>
+        </Container>
+      </header>
+    </div>
+  );
+}
+
+// register page
 function LandingPage() {
   const location = useLocation();
   const history = useHistory();
@@ -85,7 +182,6 @@ function LandingPage() {
     history.push("/noToken");
   }
 
-  const classes = useStyles();
   return (
     <div className="App">
       <header className="App-header">
@@ -125,7 +221,6 @@ function NoToken() {
 
 // Rules Page
 function Rules() {
-  const classes = useStyles();
   const history = useHistory();
 
   // exit out if we don't have a token

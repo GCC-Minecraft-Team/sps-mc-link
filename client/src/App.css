@@ -33,3 +33,39 @@
     font-size: 24px !important;
     font-family: 'Oswald', sans-serif !important;
 }
+
+.OswaldHeader {
+    font-family: 'Oswald', sans-serif !important;
+}
+
+.screenshot {
+    width: 100%;
+}
+
+.instructionCard {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.infoPaper {
+    margin: 1em;
+    padding: 1em;
+}
+
+.paperText {
+    text-align: left;
+    color: #fff;
+}
+
+.statusText {
+    font-size: 2em;
+    font-family: 'Oswald', sans-serif !important;
+}
+
+.online {
+    color: rgb(0, 223, 0);
+}
+
+.offline {
+    color: red;
+}
