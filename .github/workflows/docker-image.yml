@@ -23,3 +23,4 @@ jobs:
         access_token: ${{ secrets.GITHUB_TOKEN }}
         # GitHub user to publish the image on behalf of.
         username: nlaha
+        tags: latest  
