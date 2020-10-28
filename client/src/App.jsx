@@ -1,8 +1,6 @@
 import "./App.css";
 import "./Custom.css";
 
-import config from "./config/config";
-
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -136,7 +134,7 @@ function Rules() {
             proceed.
           </Typography>
           <MicrosoftLogin
-            clientId={config.client_id}
+            clientId="1ac69b12-d1f7-48cb-a361-e85487cefb4f"
             authCallback={authHandler}
           />
         </Container>
