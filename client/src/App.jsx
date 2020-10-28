@@ -59,9 +59,6 @@ function App() {
         <Route path="/rules">
           <Rules />
         </Route>
-        <Route path="/oauthCallback">
-          <OAuthCallback />
-        </Route>
         <Route path="/registerSuccess">
           <Success />
         </Route>
@@ -71,6 +68,7 @@ function App() {
         <Route path="/noToken">
           <NoToken />
         </Route>
+        <Route path="/auth/microsoft"></Route>
       </Router>
     </ThemeProvider>
   );
@@ -135,26 +133,6 @@ function Rules() {
     history.push("/noToken");
   }
 
-  const authHandler = (err, data) => {
-    if (data) {
-      console.log("Storing Auth ID");
-      console.log(
-        "Account ID:" +
-          data.authResponseWithAccessToken.account.accountIdentifier
-      );
-      console.log(data);
-      authData = data;
-    } else {
-      history.push("/error");
-    }
-
-    if (err) {
-      authData = err;
-    }
-
-    history.push("/registerSuccess");
-  };
-
   return (
     <div className="App">
       <header className="App-header">
@@ -179,14 +157,18 @@ function Rules() {
             spawning TNT is going to get you banned pretty quickly.
             <br></br>
             <br></br>
-            If you agree to the above, click the Microsoft login button to
-            proceed.
+            If you agree to the above, click "I Agree" below.
           </Typography>
-          <MicrosoftLogin
-            clientId="1ac69b12-d1f7-48cb-a361-e85487cefb4f"
-            authCallback={authHandler}
-            redirectUri={process.env.REACT_APP_OAUTH_REDIRECT}
-          />
+          <a href="/auth/microsoft">
+            <Button
+              className="large-btn"
+              size="large"
+              variant="contained"
+              color="primary"
+            >
+              I Agree
+            </Button>
+          </a>
         </Container>
       </header>
     </div>
@@ -224,47 +206,11 @@ function ShowMessage(message, messageSubtitle, messageSubtitle2) {
 }
 
 function Success() {
-  const history = useHistory();
-  if (!authData.authResponseWithAccessToken) {
-    return ShowMessage(
-      "Something went wrong, please try again from the original link!"
-    );
-  }
-
-  var registerData = {
-    OAuthData: authData,
-    OriginalMCToken: params.token,
-  };
-
-  axios.post(process.env.REACT_APP_MC_URL, { registerData }).then((res) => {
-    return ShowMessage(
-      `Sucessfully Registered`,
-      `SPS Account: ${authData.authResponseWithAccessToken.account.name}!`,
-      `MC Token: ${params.token}`
-    );
-  });
-
-  return ShowMessage(
-    "Can't connect to Minecraft, it might be offline, check back later!",
-    `SPS Account: ${authData.authResponseWithAccessToken.account.name}!`,
-    `MC Token: ${params.token}`
-  );
+  return ShowMessage(`Sucessfully Registered!`);
 }
 
 function Error() {
   return ShowMessage(`Error :(`);
-}
-
-// OAuth Callback
-function OAuthCallback() {
-  const history = useHistory();
-  if (!authData) {
-    return ShowMessage(
-      "Something went wrong, please try again from the original link!"
-    );
-  }
-
-  return <h1>Registered Sucessfully! {authData}</h1>;
 }
 
 export default App;
