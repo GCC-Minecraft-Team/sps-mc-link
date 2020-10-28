@@ -185,7 +185,7 @@ function Rules() {
           <MicrosoftLogin
             clientId="1ac69b12-d1f7-48cb-a361-e85487cefb4f"
             authCallback={authHandler}
-            redirectUri="https://f5024f3950b2.ngrok.io/oauthCallback"
+            redirectUri={process.env.REACT_APP_OAUTH_REDIRECT}
           />
         </Container>
       </header>
