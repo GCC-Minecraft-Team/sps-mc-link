@@ -155,6 +155,7 @@ app.get(
         res.redirect("/registerSuccess");
       })
       .catch(function (error) {
+        console.log(error);
         res.redirect("/error");
       });
   }
