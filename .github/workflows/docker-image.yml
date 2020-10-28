@@ -1,0 +1,25 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Docker Package Registry
+      # You may pin to the exact commit or the version.
+      # uses: craftech-io/package-action@009001a7fd1c4f139ae06aeceed9b679daf52734
+      uses: craftech-io/package-action@v3.1.0
+      with:
+        # GitHub Repository Token to log in using.
+        access_token: ${{ secrets.GITHUB_TOKEN }}
+        # GitHub user to publish the image on behalf of.
+        username: nlaha

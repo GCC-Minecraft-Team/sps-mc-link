@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+# Getting Started with SPS-MC-Link-Webapp
+![Node.js CI](https://github.com/GCC-Minecraft-Team/sps-mc-link-webapp/workflows/Node.js%20CI/badge.svg)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Dockerfile
+I've included a dockerfile for easy deployment
+
+Set environment variables specified in client/env.example and expose port 9090
 
 ## Available Scripts
 
