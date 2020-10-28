@@ -1,6 +1,8 @@
 import "./App.css";
 import "./Custom.css";
 
+import config from "./config/config";
+
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -110,8 +112,10 @@ function Rules() {
     <div className="App">
       <header className="App-header">
         <Container maxWidth="md">
-          <h3 className={classes.pageTitle}>Rules & Terms of Use</h3>
-          <p className={classes.infoParagraph}>
+          <Typography variant="h3" className="pageTitle">
+            Rules & Terms of Use
+          </Typography>
+          <Typography className="infoParagraph" variant="h6" gutterBottom>
             Everyone (including admins and moderators) must follow GCC & SPS
             guidlines. Anyone who breaks these rules will be banned. At GCC, we
             follow the contributer covenant, it offers some pretty good
@@ -130,9 +134,9 @@ function Rules() {
             <br></br>
             If you agree to the above, click the Microsoft login button to
             proceed.
-          </p>
+          </Typography>
           <MicrosoftLogin
-            clientId={process.env.REACT_APP_OAUTH_CLIENT_ID}
+            clientId={config.client_id}
             authCallback={authHandler}
           />
         </Container>
