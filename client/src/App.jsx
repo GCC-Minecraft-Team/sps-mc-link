@@ -136,6 +136,7 @@ function Rules() {
           <MicrosoftLogin
             clientId="1ac69b12-d1f7-48cb-a361-e85487cefb4f"
             authCallback={authHandler}
+            redirectUri="https://mc.nlaha.com/oauthCallback"
           />
         </Container>
       </header>
