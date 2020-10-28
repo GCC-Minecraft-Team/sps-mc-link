@@ -17,8 +17,6 @@ import MicrosoftLogin from "react-microsoft-login";
 import queryString from "query-string";
 import axios from "axios";
 
-import status from "minecraft-server-status";
-
 import {
   createMuiTheme,
   makeStyles,
