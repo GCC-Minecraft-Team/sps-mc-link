@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Dockerfile
+I've included a dockerfile for easy deployment
+
+Set environment variables specified in client/env.example and expose port 9090
+
 ## Available Scripts
 
 In the project directory, you can run:
