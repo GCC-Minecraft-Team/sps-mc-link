@@ -1,3 +1,22 @@
 a {
     color: #ff5f52;
 }
+
+.pageTitle {
+    font-family: "Oswald" !important;
+    margin-bottom: 1.0em !important;
+}
+
+.infoParagraph {
+    font-family: "Open Sans" !important;
+    margin-bottom: 1.4em !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .pageTitle {
+        font-size: 2.0em !important;
+    }
+    .infoParagraph {
+        font-size: 1.0em !important;
+    }
+}

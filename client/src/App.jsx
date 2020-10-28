@@ -37,14 +37,7 @@ const theme = createMuiTheme({
 });
 
 // custom CSS
-const useStyles = makeStyles((theme) => ({
-  pageTitle: {
-    fontFamily: "Oswald",
-  },
-  infoParagraph: {
-    fontSize: 25,
-  },
-}));
+const useStyles = makeStyles((theme) => ({}));
 
 // Router
 function App() {
@@ -81,19 +74,19 @@ function LandingPage() {
     <div className="App">
       <header className="App-header">
         <Container maxWidth="md">
-          <h3 className={classes.pageTitle}>
+          <Typography variant="h3" className="pageTitle">
             Ballard High School
             <br></br>
             Unofficial Minecraft Server
-          </h3>
-          <p className={classes.infoParagraph}>
+          </Typography>
+          <Typography className="infoParagraph" variant="h6" gutterBottom>
             We need everyone to register with their school email accounts. We
             don't store any of this information aside from an ID that identifies
             you on the server.
             <br></br>
             <br></br>
             Please contact Nathan Laha on MS Teams with any further questions.
-          </p>
+          </Typography>
           <Link to="/rules">
             <Button
               className="large-btn"
