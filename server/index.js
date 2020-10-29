@@ -142,7 +142,7 @@ app.get(
     failureRedirect: "/error",
   }),
   function (req, res) {
-    console.log(req.user);
+    console.log(req.user.oid);
     var token = app.get("mctoken");
 
     axios
