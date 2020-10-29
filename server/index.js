@@ -137,7 +137,10 @@ app.get("/auth/microsoft", passport.authenticate("azure_ad_oauth2"));
 
 app.get(
   "/auth/microsoft/callback",
-  passport.authenticate("azure_ad_oauth2", { failureRedirect: "/error" }),
+  passport.authenticate("azure_ad_oauth2", {
+    session: false,
+    failureRedirect: "/error",
+  }),
   function (req, res) {
     req.session.user = req.user;
     console.log(req.user);
