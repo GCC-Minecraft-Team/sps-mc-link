@@ -142,13 +142,12 @@ app.get(
     failureRedirect: "/error",
   }),
   function (req, res) {
-    req.session.user = req.user;
     console.log(req.user);
     var token = app.get("mctoken");
 
     axios
       .post(process.env.MC_URL, {
-        token: req.session.user.oid,
+        token: req.user.oid,
         id: token,
       })
       .then(function (response) {
