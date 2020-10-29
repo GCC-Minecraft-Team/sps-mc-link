@@ -18,7 +18,6 @@ const password = process.env.DB_PASSWORD;
 /** MONGO DB CONNECTION */
 
 const uri = `mongodb://${user}:${password}@${host}:${port}/mclink?authSource=admin`;
-console.log(uri);
 
 mongoose.connect(uri, {
   useNewUrlParser: true,
@@ -143,21 +142,19 @@ app.get(
   function (req, res) {
     req.session.user = req.user;
     console.log(req.user.oid);
+    var token = app.get("mctoken");
 
     axios
       .post(process.env.MC_URL, {
         token: req.session.user.oid,
-        id: app.get("mctoken"),
+        id: token,
       })
       .then(function (response) {
         // sucess?
         // Successful authentication, redirect.
-        res.redirect("/registerSuccess");
-      })
-      .catch(function (error) {
-        console.log(error);
-        res.redirect("/error");
       });
+
+    res.redirect("/registerSuccess");
   }
 );
 
