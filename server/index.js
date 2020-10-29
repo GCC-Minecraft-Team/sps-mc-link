@@ -4,6 +4,14 @@ const axios = require("axios");
 var jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+import {
+  uniqueNamesGenerator,
+  Config,
+  adjectives,
+  colors,
+  animals,
+} from "unique-names-generator";
+
 const passport = require("passport");
 var AzureAdOAuth2Strategy = require("passport-azure-ad-oauth2").Strategy;
 
@@ -146,10 +154,18 @@ app.get(
     var token = app.get("mctoken");
     console.log("MC Token: " + token);
 
+    const shortName = uniqueNamesGenerator({
+      dictionaries: [adjectives, animals, colors], // colors can be omitted here as not used
+      length: 3,
+    });
+
+    console.log("MC Name: " + shortName);
+
     axios
       .post(process.env.MC_URL, {
         token: req.user.oid,
         id: token,
+        nick: shortName,
       })
       .then(function (response) {
         // sucess?
