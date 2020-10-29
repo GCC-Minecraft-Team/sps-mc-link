@@ -41,7 +41,6 @@ db.once("open", async function () {
 const Schema = mongoose.Schema;
 const userSchema = new Schema({
   oAuthId: { type: String, required: true },
-  oAuthData: { type: Object, required: true },
 });
 
 // make a mongoose model based on the schema
