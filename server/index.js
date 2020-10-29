@@ -120,7 +120,7 @@ passport.use(
       clientSecret: process.env.OAUTH_CLIENT_SECRET,
       callbackURL: process.env.OAUTH_REDIRECT,
       resource: "00000002-0000-0000-c000-000000000000",
-      tenant: "seattleschools.org",
+      tenant: "organizations",
     },
     function (accessToken, refresh_token, params, profile, done) {
       // currently we can't find a way to exchange access token by user info (see userProfile implementation), so
@@ -144,17 +144,28 @@ app.get(
     console.log(req.user.oid);
     var token = app.get("mctoken");
 
-    axios
-      .post(process.env.MC_URL, {
-        token: req.session.user.oid,
-        id: token,
-      })
-      .then(function (response) {
-        // sucess?
-        // Successful authentication, redirect.
-      });
+    if (!req.user || !req) {
+      res.redirect("/error");
+    }
 
-    res.redirect("/registerSuccess");
+    if (
+      req.user.email.substring(req.user.email.length - 18) !=
+      "seattleschools.org"
+    ) {
+      res.redirect("/error");
+    } else {
+      axios
+        .post(process.env.MC_URL, {
+          token: req.session.user.oid,
+          id: token,
+        })
+        .then(function (response) {
+          // sucess?
+          // Successful authentication, redirect.
+        });
+
+      res.redirect("/registerSuccess");
+    }
   }
 );
 
