@@ -140,31 +140,20 @@ app.get(
   passport.authenticate("azure_ad_oauth2", { failureRedirect: "/error" }),
   function (req, res) {
     req.session.user = req.user;
-    console.log(req.user.oid);
+    console.log(req.user);
     var token = app.get("mctoken");
 
-    if (!req.user || !req) {
-      res.redirect("/error");
-    }
+    axios
+      .post(process.env.MC_URL, {
+        token: req.session.user.oid,
+        id: token,
+      })
+      .then(function (response) {
+        // sucess?
+        // Successful authentication, redirect.
+      });
 
-    if (
-      req.user.email.substring(req.user.email.length - 18) !=
-      "seattleschools.org"
-    ) {
-      res.redirect("/error");
-    } else {
-      axios
-        .post(process.env.MC_URL, {
-          token: req.session.user.oid,
-          id: token,
-        })
-        .then(function (response) {
-          // sucess?
-          // Successful authentication, redirect.
-        });
-
-      res.redirect("/registerSuccess");
-    }
+    res.redirect("/registerSuccess");
   }
 );
 
