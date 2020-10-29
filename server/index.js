@@ -120,7 +120,7 @@ passport.use(
       clientSecret: process.env.OAUTH_CLIENT_SECRET,
       callbackURL: process.env.OAUTH_REDIRECT,
       resource: "00000002-0000-0000-c000-000000000000",
-      tenant: "organizations",
+      tenant: "https://login.microsoftonline.com/organizations/oauth2/v2.0",
     },
     function (accessToken, refresh_token, params, profile, done) {
       // currently we can't find a way to exchange access token by user info (see userProfile implementation), so
