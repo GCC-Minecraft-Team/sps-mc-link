@@ -143,6 +143,7 @@ app.get(
   passport.authenticate("azure_ad_oauth2", { failureRedirect: "/error" }),
   function (req, res) {
     req.session.user = req.user;
+    console.log(req.user.oid);
 
     axios
       .post(process.env.MC_URL, {
