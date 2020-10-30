@@ -9,6 +9,14 @@ I've included a dockerfile for easy deployment
 
 Set environment variables specified in client/env.example and expose port 9090
 
+## Installation
+
+`cd server`
+`npm install`
+
+`cd client`
+`npm install`
+
 ## Available Scripts
 
 In the project directory, you can run:
