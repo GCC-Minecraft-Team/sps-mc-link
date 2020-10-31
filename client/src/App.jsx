@@ -13,7 +13,6 @@ import Container from "@material-ui/core/Container";
 import Card from "@material-ui/core/Paper";
 import CardContent from "@material-ui/core/CardContent";
 
-import MicrosoftLogin from "react-microsoft-login";
 import queryString from "query-string";
 import axios from "axios";
 
@@ -185,7 +184,7 @@ function LandingPage() {
       <header className="App-header">
         <Container maxWidth="md">
           <Typography variant="h3" className="pageTitle">
-            Ballard High School
+            Seattle Public Schools
             <br></br>
             Unofficial Minecraft Server
           </Typography>
