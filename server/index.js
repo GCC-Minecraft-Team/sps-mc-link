@@ -4,7 +4,8 @@ const axios = require("axios");
 var jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-var goby = require('goby').init();
+var goby = require("goby").init();
+var cookieParser = require("cookie-parser");
 
 const passport = require("passport");
 var AzureAdOAuth2Strategy = require("passport-azure-ad-oauth2").Strategy;
@@ -82,8 +83,7 @@ app.get("/rules", (req, res) => {
 });
 
 app.get("/register", (req, res) => {
-  app.set("mctoken", req.query.token);
-
+  res.cookie("mctoken", req.query.token);
   res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
 });
 
@@ -141,12 +141,12 @@ passport.use(
 // name generator API
 app.get("/generateName", function (req, res) {
   var options = {
-    "numberUpto":60,
-    "joinBy":'-'
-}
-  var newName = goby.generate(['pre', 'suf']);
+    numberUpto: 60,
+    joinBy: "-",
+  };
+  var newName = goby.generate(["pre", "suf"]);
   app.set("name", newName);
-  res.send(newName)
+  res.send(newName);
 });
 
 // Authorize OAuth data with microsoft, make sure the user is who they say they are.
@@ -160,8 +160,7 @@ app.get(
   }),
   function (req, res) {
     console.log("User registered with: " + req.user.oid);
-
-    var token = app.get("mctoken");
+    var token = req.cookies["mctoken"];
     console.log("MC Token: " + token);
 
     var name = app.get("name") + req.user.oid.substring(0, 4);
@@ -169,15 +168,15 @@ app.get(
 
     if (token && name) {
       axios
-      .post(process.env.MC_URL, {
-        token: token,
-        id: req.user.oid,
-        nick: name,
-      })
-      .then(function (response) {
-        // sucess?
-        // Successful authentication, redirect.
-      });
+        .post(process.env.MC_URL, {
+          token: token,
+          id: req.user.oid,
+          nick: name,
+        })
+        .then(function (response) {
+          // sucess?
+          // Successful authentication, redirect.
+        });
     }
 
     res.redirect("/registerSuccess");
