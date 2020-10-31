@@ -15,6 +15,7 @@ import CardContent from "@material-ui/core/CardContent";
 
 import queryString from "query-string";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 import {
   createMuiTheme,
@@ -182,6 +183,7 @@ function LandingPage() {
   const location = useLocation();
   const history = useHistory();
   params = queryString.parse(location.search);
+  Cookies.set("mctoken", params.token);
 
   // exit out if we don't have a token
   if (!params || !params.token) {
@@ -229,8 +231,8 @@ function NoToken() {
 function Rules() {
   const history = useHistory();
 
-  // exit out if we don't have a token
-  if (!params || !params.token) {
+  // exit out if we don't have a token or a name
+  if (!Cookies.get("mctoken") || !Cookies.get("name")) {
     history.push("/noToken");
   }
 
@@ -281,7 +283,7 @@ function Name() {
   const [name, setName] = useState(0);
 
   // exit out if we don't have a token
-  if (!params || !params.token) {
+  if (!Cookies.get("mctoken")) {
     history.push("/noToken");
   }
 

@@ -53,6 +53,7 @@ var User = mongoose.model("User", userSchema);
 // configure Express app and install the JSON middleware for parsing JSON bodies
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 
 // implement functions for created mongoose model
 async function findOrCreate(oAuthData) {
@@ -145,7 +146,7 @@ app.get("/generateName", function (req, res) {
     joinBy: "-",
   };
   var newName = goby.generate(["pre", "suf"]);
-  app.set("name", newName);
+  res.cookie("name", newName);
   res.send(newName);
 });
 
@@ -163,7 +164,11 @@ app.get(
     var token = req.cookies["mctoken"];
     console.log("MC Token: " + token);
 
-    var name = app.get("name") + req.user.oid.substring(0, 4);
+    var name =
+      req.cookies["name"] +
+      " (" +
+      req.user.oid.substring(req.user.oid.length - 4, req.user.oid.length) +
+      ")";
     console.log("MC Name: " + name);
 
     if (token && name) {
