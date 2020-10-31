@@ -121,7 +121,7 @@ function InfoPage() {
       <header className="App-header">
         <Container maxWidth="md">
           <Typography variant="h3" className="pageTitle">
-            Ballard High School
+            Seattle Public Schools
             <br></br>
             Unofficial Minecraft Server
           </Typography>
