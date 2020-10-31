@@ -17,10 +17,10 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "goby": "^1.1.2",
     "jsonwebtoken": "^8.5.1",
     "minecraft-server-status": "^1.0.1",
     "mongoose": "^5.10.11",
-    "name-creator": "^3.0.3",
     "passport": "^0.4.1",
     "passport-azure-ad-oauth2": "0.0.4",
     "request": "^2.88.2"
