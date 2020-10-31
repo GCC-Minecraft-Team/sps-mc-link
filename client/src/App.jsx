@@ -78,6 +78,12 @@ function App() {
         </Route>
         <Route path="/auth/microsoft"></Route>
       </Router>
+      <div className="App">
+        <footer className="App-footer">
+          Ballard High School -{" "}
+          <a href="https://gcc.nlaha.com">General Computing Club (GCC)</a>
+        </footer>
+      </div>
     </ThemeProvider>
   );
 }

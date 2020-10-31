@@ -16,6 +16,12 @@
     color: white;
 }
 
+.App-footer {
+    background-color: #251d1d;
+    color: white;
+    padding-bottom: 1em;
+}
+
 .App-link {
     color: #ff5f52;
 }
