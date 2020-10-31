@@ -27,22 +27,22 @@ import {
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: "#ff5f52",
-      main: "#c62828",
-      dark: "#8e0000",
+      light: "#63a4ff",
+      main: "#1976d2",
+      dark: "#004ba0",
       contrastText: "#fff",
     },
     secondary: {
-      light: "#48a999",
-      main: "#00796b",
-      dark: "#004c40",
+      light: "#98ee99",
+      main: "#66bb6a",
+      dark: "#338a3e",
       contrastText: "#000",
     },
     background: {
-      light: "#ff5f52",
-      main: "#251d1d",
-      dark: "#8e0000",
-      paper: "#1a1414",
+      light: "#63a4ff",
+      main: "#1976d2",
+      dark: "#004ba0",
+      paper: "#16171c",
       contrastText: "#fff",
     },
   },
@@ -84,11 +84,10 @@ function App() {
             </Route>
             <Route path="/auth/microsoft"></Route>
             <footer className="App-footer">
-              Ballard High School -{" "}
-              <a href="https://gcc.nlaha.com">General Computing Club (GCC)</a>
+              This is a project developed by SPS students
               <br></br>
               <br></br>
-              Web Dev & Hosting - <a href="https://nlaha.com">Nathan Laha</a>
+              Hosting - <a href="https://nlaha.com">Nathan Laha</a>
             </footer>
           </Router>
         </header>
@@ -246,10 +245,10 @@ function Rules() {
         Rules & Terms of Use
       </Typography>
       <Typography className="infoParagraph" variant="h6" gutterBottom>
-        Everyone (including admins and moderators) must follow GCC & SPS
-        guidlines. Anyone who breaks these rules will be banned. At GCC, we
-        follow the contributer covenant, it offers some pretty good guidelines
-        to go by.
+        Everyone (including admins and moderators) must follow SPS guidlines.
+        Anyone who breaks these rules will be banned. We also enforce the
+        contributer covenant where applicable, it's a good set of rules used by
+        most major tech companies for software development.
         <br></br>
         <br></br>
         <a href="https://www.contributor-covenant.org/">Contributor Covenant</a>
