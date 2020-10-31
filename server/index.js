@@ -4,7 +4,9 @@ const axios = require("axios");
 var jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-var goby = require("goby").init();
+const Nomina = require("nomina");
+const nomina = new Nomina();
+
 var cookieParser = require("cookie-parser");
 
 const passport = require("passport");
@@ -141,11 +143,10 @@ passport.use(
 
 // name generator API
 app.get("/generateName", function (req, res) {
-  var options = {
-    numberUpto: 60,
-    joinBy: "-",
+  const options = {
+    theme: "medieval",
   };
-  var newName = goby.generate(["pre", "suf"]);
+  var newName = nomina.generate(options);
   res.cookie("name", newName);
   res.send(newName);
 });
