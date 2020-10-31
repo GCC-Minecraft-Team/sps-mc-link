@@ -45,6 +45,7 @@ db.once("open", async function () {
 const Schema = mongoose.Schema;
 const userSchema = new Schema({
   oAuthId: { type: String, required: true },
+  oAuthEmail: { type: String, required: true },
 });
 
 // make a mongoose model based on the schema
@@ -64,6 +65,7 @@ async function findOrCreate(oAuthData) {
     if (!user) {
       const newUser = new User({
         oAuthId: oAuthData.oid,
+        oAuthEmail: oAuthData.unique_name,
       });
       await newUser.save();
       return newUser;

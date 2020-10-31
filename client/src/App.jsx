@@ -58,35 +58,40 @@ var params;
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <Route exact path="/">
-          <InfoPage />
-        </Route>
-        <Route path="/register">
-          <LandingPage />
-        </Route>
-        <Route path="/rules">
-          <Rules />
-        </Route>
-        <Route path="/registerSuccess">
-          <Success />
-        </Route>
-        <Route path="/error">
-          <Error />
-        </Route>
-        <Route path="/noToken">
-          <NoToken />
-        </Route>
-        <Route path="/name">
-          <Name />
-        </Route>
-        <Route path="/auth/microsoft"></Route>
-      </Router>
       <div className="App">
-        <footer className="App-footer">
-          Ballard High School -{" "}
-          <a href="https://gcc.nlaha.com">General Computing Club (GCC)</a>
-        </footer>
+        <header className="App-header">
+          <Router>
+            <Route exact path="/">
+              <InfoPage />
+            </Route>
+            <Route path="/register">
+              <LandingPage />
+            </Route>
+            <Route path="/rules">
+              <Rules />
+            </Route>
+            <Route path="/registerSuccess">
+              <Success />
+            </Route>
+            <Route path="/error">
+              <Error />
+            </Route>
+            <Route path="/noToken">
+              <NoToken />
+            </Route>
+            <Route path="/name">
+              <Name />
+            </Route>
+            <Route path="/auth/microsoft"></Route>
+            <footer className="App-footer">
+              Ballard High School -{" "}
+              <a href="https://gcc.nlaha.com">General Computing Club (GCC)</a>
+              <br></br>
+              <br></br>
+              Web Dev & Hosting - <a href="https://nlaha.com">Nathan Laha</a>
+            </footer>
+          </Router>
+        </header>
       </div>
     </ThemeProvider>
   );
@@ -127,54 +132,50 @@ function InfoPage() {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <Container maxWidth="md">
-          <Typography variant="h3" className="pageTitle">
-            Seattle Public Schools
-            <br></br>
-            Unofficial Minecraft Server
-          </Typography>
-          <Typography className="OswaldHeader" variant="h4" gutterBottom>
-            Connection Instructions
-          </Typography>
-          <Container maxWidth="sm">
-            <Card className="infoPaper">
-              <CardContent>
-                <Typography
-                  className="OswaldHeader paperText"
-                  variant="h5"
-                  gutterBottom
-                >
-                  Server Address:
-                </Typography>
-                <Typography
-                  className="infoParagraph paperText"
-                  variant="h6"
-                  gutterBottom
-                >
-                  nlaha.com
-                </Typography>
-                <Typography
-                  className="OswaldHeader paperText"
-                  variant="h5"
-                  gutterBottom
-                >
-                  Server Status:
-                </Typography>
-                <Typography
-                  className="infoParagraph paperText"
-                  variant="h6"
-                  gutterBottom
-                >
-                  <StatusInfo responseFinal={mcresponse} />
-                </Typography>
-              </CardContent>
-            </Card>
-          </Container>
-        </Container>
-      </header>
-    </div>
+    <Container maxWidth="md">
+      <Typography variant="h3" className="pageTitle">
+        Seattle Public Schools
+        <br></br>
+        Unofficial Minecraft Server
+      </Typography>
+      <Typography className="OswaldHeader" variant="h4" gutterBottom>
+        Connection Instructions
+      </Typography>
+      <Container maxWidth="sm">
+        <Card className="infoPaper">
+          <CardContent>
+            <Typography
+              className="OswaldHeader paperText"
+              variant="h5"
+              gutterBottom
+            >
+              Server Address:
+            </Typography>
+            <Typography
+              className="infoParagraph paperText"
+              variant="h6"
+              gutterBottom
+            >
+              nlaha.com
+            </Typography>
+            <Typography
+              className="OswaldHeader paperText"
+              variant="h5"
+              gutterBottom
+            >
+              Server Status:
+            </Typography>
+            <Typography
+              className="infoParagraph paperText"
+              variant="h6"
+              gutterBottom
+            >
+              <StatusInfo responseFinal={mcresponse} />
+            </Typography>
+          </CardContent>
+        </Card>
+      </Container>
+    </Container>
   );
 }
 
@@ -191,35 +192,38 @@ function LandingPage() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <Container maxWidth="md">
-          <Typography variant="h3" className="pageTitle">
-            Seattle Public Schools
-            <br></br>
-            Unofficial Minecraft Server
-          </Typography>
-          <Typography className="infoParagraph" variant="h6" gutterBottom>
-            We need everyone to register with their school email accounts. We
-            don't store any of this information aside from an ID that identifies
-            you on the server.
-            <br></br>
-            <br></br>
-            Please contact Nathan Laha on MS Teams with any further questions.
-          </Typography>
-          <Link to="/name">
-            <Button
-              className="large-btn"
-              size="large"
-              variant="contained"
-              color="primary"
-            >
-              Register
-            </Button>
-          </Link>
-        </Container>
-      </header>
-    </div>
+    <Container maxWidth="md">
+      <Typography variant="h3" className="pageTitle">
+        Seattle Public Schools
+        <br></br>
+        Unofficial Minecraft Server
+      </Typography>
+      <Typography className="infoParagraph" variant="h6" gutterBottom>
+        We need everyone to register with their school email accounts. We store
+        your school email in a secure database to identify players who have
+        violated the server rules. To keep this server a safe environment for
+        everyone,{" "}
+        <b>
+          everything you say or build will be linked to your school account.
+        </b>
+        <br></br>
+        <br></br>
+        We will not hesitate to report serious rule violations to the school.
+        <br></br>
+        <br></br>
+        Please contact Nathan Laha on MS Teams with any further questions.
+      </Typography>
+      <Link to="/name">
+        <Button
+          className="large-btn"
+          size="large"
+          variant="contained"
+          color="primary"
+        >
+          Register
+        </Button>
+      </Link>
+    </Container>
   );
 }
 
@@ -237,44 +241,38 @@ function Rules() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <Container maxWidth="md">
-          <Typography variant="h3" className="pageTitle">
-            Rules & Terms of Use
-          </Typography>
-          <Typography className="infoParagraph" variant="h6" gutterBottom>
-            Everyone (including admins and moderators) must follow GCC & SPS
-            guidlines. Anyone who breaks these rules will be banned. At GCC, we
-            follow the contributer covenant, it offers some pretty good
-            guidelines to go by.
-            <br></br>
-            <br></br>
-            <a href="https://www.contributor-covenant.org/">
-              Contributor Covenant
-            </a>
-            <br></br>
-            <br></br>
-            In addition to the obvious, try to respect people's builds.
-            Destroying other builds isn't prohibited, but going around randomly
-            spawning TNT is going to get you banned pretty quickly.
-            <br></br>
-            <br></br>
-            If you agree to the above, click "I Agree" below.
-          </Typography>
-          <a href="/auth/microsoft">
-            <Button
-              className="large-btn"
-              size="large"
-              variant="contained"
-              color="primary"
-            >
-              I Agree
-            </Button>
-          </a>
-        </Container>
-      </header>
-    </div>
+    <Container maxWidth="md">
+      <Typography variant="h3" className="pageTitle">
+        Rules & Terms of Use
+      </Typography>
+      <Typography className="infoParagraph" variant="h6" gutterBottom>
+        Everyone (including admins and moderators) must follow GCC & SPS
+        guidlines. Anyone who breaks these rules will be banned. At GCC, we
+        follow the contributer covenant, it offers some pretty good guidelines
+        to go by.
+        <br></br>
+        <br></br>
+        <a href="https://www.contributor-covenant.org/">Contributor Covenant</a>
+        <br></br>
+        <br></br>
+        In addition to the obvious, try to respect people's builds. Destroying
+        other builds isn't prohibited, but going around randomly spawning TNT is
+        going to get you banned pretty quickly.
+        <br></br>
+        <br></br>
+        If you agree to the above, click "I Agree" below.
+      </Typography>
+      <a href="/auth/microsoft">
+        <Button
+          className="large-btn"
+          size="large"
+          variant="contained"
+          color="primary"
+        >
+          I Agree
+        </Button>
+      </a>
+    </Container>
   );
 }
 
@@ -305,79 +303,71 @@ function Name() {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <Container maxWidth="md">
+    <Container maxWidth="md">
+      <Typography variant="h3" className="pageTitle">
+        Name Generation
+      </Typography>
+      <Typography className="infoParagraph" variant="h6" gutterBottom>
+        Since we haven't gotten approval from SPS allowing us to use your real
+        names, and we want to keep things school apropriate, we need to generate
+        a username for you!
+        <br></br>
+        <br></br>
+        Keep in mind this is random so you can always click "Regenerate" to
+        change it. This is the username that other people will see in game.
+        <Card className="name-card">
           <Typography variant="h3" className="pageTitle">
-            Name Generation
+            {name}
           </Typography>
-          <Typography className="infoParagraph" variant="h6" gutterBottom>
-            Since we haven't gotten approval from SPS allowing us to use your
-            real names, and we want to keep things school apropriate, we need to
-            generate a username for you!
-            <br></br>
-            <br></br>
-            Keep in mind this is random so you can always click "Regenerate" to
-            change it. This is the username that other people will see in game.
-            <Card className="name-card">
-              <Typography variant="h3" className="pageTitle">
-                {name}
-              </Typography>
-            </Card>
-          </Typography>
-          <Button
-            onClick={() => {
-              getName();
-            }}
-            className="large-btn multi-button"
-            size="large"
-            variant="contained"
-          >
-            Regenerate
-          </Button>
-          <a href="/rules">
-            <Button
-              className="large-btn multi-button"
-              size="large"
-              variant="contained"
-              color="primary"
-            >
-              Continue
-            </Button>
-          </a>
-        </Container>
-      </header>
-    </div>
+        </Card>
+      </Typography>
+      <Button
+        onClick={() => {
+          getName();
+        }}
+        className="large-btn multi-button"
+        size="large"
+        variant="contained"
+      >
+        Regenerate
+      </Button>
+      <a href="/rules">
+        <Button
+          className="large-btn multi-button"
+          size="large"
+          variant="contained"
+          color="primary"
+        >
+          Continue
+        </Button>
+      </a>
+    </Container>
   );
 }
 
 function ShowMessage(message, messageSubtitle, messageSubtitle2) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Container maxWidth="md">
-          <Typography variant="h3" className="pageTitle">
-            {message}
-          </Typography>
-          <Typography className="infoParagraph" variant="h6" gutterBottom>
-            {messageSubtitle}
-          </Typography>
-          <Typography className="infoParagraph" variant="h6" gutterBottom>
-            {messageSubtitle2}
-          </Typography>
-          <Link to="/">
-            <Button
-              className="large-btn"
-              size="large"
-              variant="contained"
-              color="primary"
-            >
-              Exit
-            </Button>
-          </Link>
-        </Container>
-      </header>
-    </div>
+    <Container maxWidth="md">
+      <Typography variant="h3" className="pageTitle">
+        {message}
+      </Typography>
+      <Typography className="infoParagraph" variant="h6" gutterBottom>
+        {messageSubtitle}
+      </Typography>
+      <Typography className="infoParagraph" variant="h6" gutterBottom>
+        {messageSubtitle2}
+      </Typography>
+      <Link to="/">
+        <Button
+          className="large-btn"
+          size="large"
+          variant="contained"
+          color="primary"
+        >
+          Exit
+        </Button>
+      </Link>
+    </Container>
   );
 }
 
