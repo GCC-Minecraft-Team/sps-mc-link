@@ -1,0 +1,99 @@
+<mxfile host="app.diagrams.net" modified="2020-10-31T01:18:00.633Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36 Edg/86.0.622.56" etag="lvcKEMIGzp-H7qbooeZe" version="13.8.5" type="github">
+  <diagram id="lN6y3mvRbJBzDXC9ouvS" name="Page-1">
+    <mxGraphModel dx="2279" dy="1225" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-1" value="MongoDB Database" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="350" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="OXW7LB-jWR2yWJxoCucP-2" target="OXW7LB-jWR2yWJxoCucP-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="OXW7LB-jWR2yWJxoCucP-2" target="OXW7LB-jWR2yWJxoCucP-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-2" value="Web App Server" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="540" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="OXW7LB-jWR2yWJxoCucP-3" target="OXW7LB-jWR2yWJxoCucP-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-3" value="User&#39;s Browser" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="770" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="OXW7LB-jWR2yWJxoCucP-4" target="OXW7LB-jWR2yWJxoCucP-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="OXW7LB-jWR2yWJxoCucP-4" target="OXW7LB-jWR2yWJxoCucP-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-4" value="Spigot Plugin" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="540" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-6" value="Generates a URL with a token in the query parameter.&lt;br&gt;&lt;br&gt;The token should be generated from the UUID of the player&lt;br&gt;&lt;br&gt;https://mc.nlaha.com/register?token=1234" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="670" y="650" width="190" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-8" value="Stores a unique SPS Id in the database" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-10" y="420" width="80" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-11" value="Sends data back to the plugin in an HTTP POST request containing the following in the body:&lt;br&gt;&lt;b&gt;token&lt;br&gt;id&lt;br&gt;nick&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="270" y="580" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-13" value="The &lt;b&gt;token&lt;/b&gt;, is the original token that the spigot plugin put in the URL&lt;br&gt;&lt;br&gt;the &lt;b&gt;id&lt;/b&gt;&amp;nbsp;is the unique sps id that also exists in the database&lt;br&gt;&lt;br&gt;the &lt;b&gt;nick&lt;/b&gt;&amp;nbsp;is the randomly generated name that the Minecraft player should have. (to prevent inappropriate names)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="420" y="300" width="405" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-15" value="Plugin should store all persistent data in the Mongo database" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="340" y="490" width="195" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="OXW7LB-jWR2yWJxoCucP-16" target="OXW7LB-jWR2yWJxoCucP-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-16" value="User joins MC Server" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-780" y="650" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="OXW7LB-jWR2yWJxoCucP-17" target="OXW7LB-jWR2yWJxoCucP-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="OXW7LB-jWR2yWJxoCucP-17" target="OXW7LB-jWR2yWJxoCucP-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-17" value="User logs in to SPS Account" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-550" y="470" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="OXW7LB-jWR2yWJxoCucP-19">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-520" y="930" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-19" value="MongoDB Database" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-600" y="760" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-21" value="oauth id" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-520" y="600" width="60" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="OXW7LB-jWR2yWJxoCucP-22" target="OXW7LB-jWR2yWJxoCucP-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-22" value="Plugin Looks up MC UUID from token" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-370" y="580" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-24" value="token&lt;br&gt;oauth id&lt;br&gt;nick" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-360" y="450" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-26" value="MC UUID&lt;br&gt;nick" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-400" y="710" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-29" value="oauth id&lt;br&gt;MC UUID&lt;br&gt;nick&lt;br&gt;ban status" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-570" y="990" width="100" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-30" value="" style="rounded=1;whiteSpace=wrap;labelBackgroundColor=none;fillColor=none;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="-600" y="990" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="OXW7LB-jWR2yWJxoCucP-31" value="USER" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-540" y="950" width="40" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
