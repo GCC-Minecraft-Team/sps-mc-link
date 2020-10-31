@@ -76,6 +76,9 @@ function App() {
         <Route path="/noToken">
           <NoToken />
         </Route>
+        <Route path="/name">
+          <Name />
+        </Route>
         <Route path="/auth/microsoft"></Route>
       </Router>
       <div className="App">
@@ -202,7 +205,7 @@ function LandingPage() {
             <br></br>
             Please contact Nathan Laha on MS Teams with any further questions.
           </Typography>
-          <Link to="/rules">
+          <Link to="/name">
             <Button
               className="large-btn"
               size="large"
@@ -265,6 +268,79 @@ function Rules() {
               color="primary"
             >
               I Agree
+            </Button>
+          </a>
+        </Container>
+      </header>
+    </div>
+  );
+}
+
+function Name() {
+  const history = useHistory();
+  const [name, setName] = useState(0);
+
+  // exit out if we don't have a token
+  if (!params || !params.token) {
+    history.push("/noToken");
+  }
+
+  async function getName() {
+    await axios
+      .get("/generateName", {})
+      .then(function (response) {
+        console.log(response.data);
+        setName(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+        history.push("/error");
+      });
+  }
+
+  useEffect(() => {
+    getName();
+  }, []);
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Container maxWidth="md">
+          <Typography variant="h3" className="pageTitle">
+            Name Generation
+          </Typography>
+          <Typography className="infoParagraph" variant="h6" gutterBottom>
+            Since we haven't gotten approval from SPS allowing us to use your
+            real names, and we want to keep things school apropriate, we need to
+            generate a username for you!
+            <br></br>
+            <br></br>
+            Keep in mind this is random so you can always click "Regenerate" to
+            change it. This is the username that other people will see in game.
+            <Card className="name-card">
+              <Typography variant="h3" className="pageTitle">
+                {name}
+              </Typography>
+            </Card>
+          </Typography>
+          <Button
+            onClick={() => {
+              getName();
+            }}
+            className="large-btn multi-button"
+            size="large"
+            variant="contained"
+          >
+            Regenerate
+          </Button>
+          <a href="/rules">
+            <Button
+              className="large-btn multi-button"
+              size="large"
+              variant="contained"
+              color="primary"
+            >
+              Continue
             </Button>
           </a>
         </Container>
