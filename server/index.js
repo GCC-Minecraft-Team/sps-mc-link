@@ -176,7 +176,7 @@ app.get(
     console.log("MC Name: " + name);
     */
 
-    if (token && name) {
+    if (token) {
       axios
         .post(process.env.MC_URL, {
           token: token,
