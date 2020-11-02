@@ -167,19 +167,21 @@ app.get(
     var token = req.cookies["mctoken"];
     console.log("MC Token: " + token);
 
+    /*
     var name =
       req.cookies["name"] +
       " (" +
       req.user.oid.substring(req.user.oid.length - 4, req.user.oid.length) +
       ")";
     console.log("MC Name: " + name);
+    */
 
     if (token && name) {
       axios
         .post(process.env.MC_URL, {
           token: token,
           id: req.user.oid,
-          nick: name,
+          nick: req.user.unique_name.split("@")[0],
         })
         .then(function (response) {
           // sucess?

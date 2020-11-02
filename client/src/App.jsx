@@ -212,7 +212,7 @@ function LandingPage() {
         <br></br>
         Please contact Nathan Laha on MS Teams with any further questions.
       </Typography>
-      <Link to="/name">
+      <Link to="/rules">
         <Button
           className="large-btn"
           size="large"
@@ -235,7 +235,7 @@ function Rules() {
   const history = useHistory();
 
   // exit out if we don't have a token or a name
-  if (!Cookies.get("mctoken") || !Cookies.get("name")) {
+  if (!Cookies.get("mctoken")) {
     history.push("/noToken");
   }
 
