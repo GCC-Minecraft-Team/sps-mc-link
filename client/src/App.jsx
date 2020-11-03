@@ -124,7 +124,7 @@ function InfoPage() {
   const [mcresponse, setMcResponse] = useState(0);
 
   useEffect(() => {
-    axios.get("https://api.mcsrvstat.us/2/nlaha.com").then((response) => {
+    axios.get("https://api.mcsrvstat.us/2/play.spsmc.net").then((response) => {
       console.log(response.data);
       setMcResponse(response.data);
     });
@@ -155,7 +155,7 @@ function InfoPage() {
               variant="h6"
               gutterBottom
             >
-              nlaha.com
+              play.spsmc.net
             </Typography>
             <Typography
               className="OswaldHeader paperText"
