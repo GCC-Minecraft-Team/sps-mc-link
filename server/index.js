@@ -65,7 +65,6 @@ async function findOrCreate(oAuthData) {
   try {
     const user = await User.findOne({ oAuthId: oAuthData.oid });
     if (!user) {
-      console.log(oAuthData);
       const newUser = new User({
         oAuthId: oAuthData.oid,
         oAuthEmail: oAuthData.unique_name,
