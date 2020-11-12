@@ -185,6 +185,7 @@ app.get(
           token: token,
           id: req.user.oid,
           nick: req.user.unique_name.split("@")[0],
+          name: req.user.name,
         })
         .then(function (response) {
           // sucess?
