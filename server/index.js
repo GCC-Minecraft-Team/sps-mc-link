@@ -13,6 +13,7 @@ const passport = require("passport");
 var AzureAdOAuth2Strategy = require("passport-azure-ad-oauth2").Strategy;
 
 const mongoose = require("mongoose");
+const { Console } = require("console");
 
 // MongoDB Databse
 const host = process.env.DB_HOST;
@@ -46,6 +47,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   oAuthId: { type: String, required: true },
   oAuthEmail: { type: String, required: true },
+  oAuthName: { type: String, required: true },
 });
 
 // make a mongoose model based on the schema
@@ -63,9 +65,11 @@ async function findOrCreate(oAuthData) {
   try {
     const user = await User.findOne({ oAuthId: oAuthData.oid });
     if (!user) {
+      console.log(oAuthData);
       const newUser = new User({
         oAuthId: oAuthData.oid,
         oAuthEmail: oAuthData.unique_name,
+        oAuthName: oAuthData.name,
       });
       await newUser.save();
       return newUser;
