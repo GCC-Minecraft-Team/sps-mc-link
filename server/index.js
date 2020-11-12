@@ -68,7 +68,6 @@ async function findOrCreate(oAuthData) {
       const newUser = new User({
         oAuthId: oAuthData.oid,
         oAuthEmail: oAuthData.unique_name,
-        oAuthName: oAuthData.name,
       });
       await newUser.save();
       return newUser;
@@ -185,7 +184,6 @@ app.get(
           token: token,
           id: req.user.oid,
           nick: req.user.unique_name.split("@")[0],
-          name: req.user.name,
         })
         .then(function (response) {
           // sucess?
