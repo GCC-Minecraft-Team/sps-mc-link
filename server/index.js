@@ -41,44 +41,12 @@ db.once("open", async function () {
   console.info("MongoDB Connected Successfully");
 });
 
-// make user DB schema
-const Schema = mongoose.Schema;
-const userSchema = new Schema({
-  oAuthId: { type: String, required: true },
-  oAuthEmail: { type: String, required: true },
-});
-
-// make a mongoose model based on the schema
-var User = mongoose.model("User", userSchema);
-
 /** BEGIN EXPRESS APP */
 
 // configure Express app and install the JSON middleware for parsing JSON bodies
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-
-// implement functions for created mongoose model
-async function findOrCreate(oAuthData) {
-  try {
-    const user = await User.findOne({ oAuthId: oAuthData.oid });
-    if (!user) {
-      const newUser = new User({
-        oAuthId: oAuthData.oid,
-        oAuthEmail: oAuthData.unique_name,
-      });
-      await newUser.save();
-      return newUser;
-    }
-    return user;
-  } catch (e) {
-    return Error("User not found");
-  }
-}
-
-function fineById(id) {
-  return User.findOne({ oAuthId: id });
-}
 
 // use routes
 app.use("/", express.static("../client/build"));
@@ -111,18 +79,7 @@ app.get("/noToken", (req, res) => {
 
 /** PASSPORT */
 
-passport.serializeUser(function (user, done) {
-  done(null, user.oid);
-});
-
-passport.deserializeUser(function (id, done) {
-  User.findById(id).then((user) => {
-    done(null, user);
-  });
-});
-
 app.use(passport.initialize());
-app.use(passport.session());
 
 passport.use(
   new AzureAdOAuth2Strategy(
@@ -182,6 +139,7 @@ app.get(
           token: token,
           id: req.user.oid,
           nick: req.user.unique_name.split("@")[0],
+          email: req.user.email,
         })
         .then(function (response) {
           // sucess?
