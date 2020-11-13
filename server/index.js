@@ -131,6 +131,7 @@ app.get(
       ")";
     console.log("MC Name: " + name);
     */
+    console.log(req.user);
 
     if (token) {
       axios
@@ -138,7 +139,7 @@ app.get(
           token: token,
           id: req.user.oid,
           nick: req.user.unique_name.split("@")[0],
-          email: req.user.email,
+          email: req.user.upn,
         })
         .then(function (response) {
           // sucess?
