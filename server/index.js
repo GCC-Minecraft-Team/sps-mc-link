@@ -94,7 +94,6 @@ passport.use(
       // you will need a jwt-package like https://github.com/auth0/node-jsonwebtoken to decode id_token and get waad profile
       var waadProfile = jwt.decode(params.id_token);
 
-      findOrCreate(waadProfile);
       done(null, waadProfile);
     }
   )
