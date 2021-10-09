@@ -87,7 +87,7 @@ passport.use(
       clientID: process.env.OAUTH_CLIENT_ID,
       clientSecret: process.env.OAUTH_CLIENT_SECRET,
       callbackURL: process.env.OAUTH_REDIRECT,
-      tenant: "seattleschools.org",
+      tenant: "common",
     },
     function (accessToken, refresh_token, params, profile, done) {
       // currently we can't find a way to exchange access token by user info (see userProfile implementation), so
